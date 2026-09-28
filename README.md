@@ -1,8 +1,13 @@
 # ComfyCastBar
 
-**Version 0.1 – Beta**
+**Version 0.2 – Beta**
 
 Customizable cast bars for **World of Warcraft: Forever**.
+
+## 0.2 Beta
+
+- Edit mode now keeps all enabled bars visible as previews while positioning them.
+- Improved mover behavior and option callback safety.
 
 ## 0.1 Beta
 
