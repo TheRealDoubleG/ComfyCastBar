@@ -4,7 +4,7 @@ ComfyCastBar = ComfyCastBar or {}
 local A=ComfyCastBar
 
 A.name=ADDON_NAME or "ComfyCastBar"
-A.version="0.3"
+A.version="0.4"
 A.buildDate="28.09.2026"
 A.status="Beta"
 A.gameVersion="WoW Forever 1.60.1"
