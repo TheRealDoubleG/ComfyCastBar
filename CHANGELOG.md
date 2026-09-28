@@ -1,5 +1,11 @@
 # ComfyCastBar Changelog
 
+## 0.2 Beta – 28.09.2026
+- Added always-visible edit previews while cast bars are unlocked.
+- Fixed bar movement support and Lua loop-callback safety in the options UI.
+- Kept live cast events from replacing edit previews while positioning bars.
+
+
 ## 0.1 Beta – 28.09.2026
 
 - Initial public beta.
