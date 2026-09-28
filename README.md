@@ -1,8 +1,12 @@
 # ComfyCastBar
 
-**Version 0.2 – Beta**
+**Version 0.3 – Beta**
 
 Customizable cast bars for **World of Warcraft: Forever**.
+
+## 0.3 Beta
+
+- Fixed mover initialization syntax; GitHub Lua 5.1 validation now guards future pushes.
 
 ## 0.2 Beta
 
