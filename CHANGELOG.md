@@ -1,5 +1,9 @@
 # ComfyCastBar Changelog
 
+## 0.3 Beta – 28.09.2026
+- Fixed a Lua syntax error in the bar mover initialization found by the new GitHub syntax check.
+
+
 ## 0.2 Beta – 28.09.2026
 - Added always-visible edit previews while cast bars are unlocked.
 - Fixed bar movement support and Lua loop-callback safety in the options UI.
