@@ -124,15 +124,16 @@ function A:InitializeOptions()
     p=self.optionsPages[2]
     local units={"player","target","focus","pet"}
     for row,unit in ipairs(units) do
+        local unitKey=unit
         local y=-20-(row-1)*135
-        local title=p:CreateFontString(nil,"ARTWORK","GameFontNormalLarge"); title:SetPoint("TOPLEFT",20,y); title:SetText(A:T(string.upper(unit)))
-        Check(p,A:T("ENABLE"),20,y-30,function() return A.db.units[unit].enabled end,function(v) A.db.units[unit].enabled=v end)
-        Check(p,A:T("SHOW_ICON"),200,y-30,function() return A.db.units[unit].showIcon end,function(v) A.db.units[unit].showIcon=v end)
-        Check(p,A:T("SHOW_NAME"),365,y-30,function() return A.db.units[unit].showName end,function(v) A.db.units[unit].showName=v end)
-        Check(p,A:T("SHOW_TIME"),530,y-30,function() return A.db.units[unit].showTime end,function(v) A.db.units[unit].showTime=v end)
-        Slider(p,A:T("WIDTH"),160,500,5,35,y-80,180,function() return A.db.units[unit].width end,function(v) A.db.units[unit].width=v end)
-        Slider(p,A:T("HEIGHT"),14,48,1,285,y-80,180,function() return A.db.units[unit].height end,function(v) A.db.units[unit].height=v end)
-        Slider(p,A:T("FONT_SIZE"),9,24,1,535,y-80,180,function() return A.db.units[unit].fontSize end,function(v) A.db.units[unit].fontSize=v end)
+        local title=p:CreateFontString(nil,"ARTWORK","GameFontNormalLarge"); title:SetPoint("TOPLEFT",20,y); title:SetText(A:T(string.upper(unitKey)))
+        Check(p,A:T("ENABLE"),20,y-30,function() return A.db.units[unitKey].enabled end,function(v) A.db.units[unitKey].enabled=v end)
+        Check(p,A:T("SHOW_ICON"),200,y-30,function() return A.db.units[unitKey].showIcon end,function(v) A.db.units[unitKey].showIcon=v end)
+        Check(p,A:T("SHOW_NAME"),365,y-30,function() return A.db.units[unitKey].showName end,function(v) A.db.units[unitKey].showName=v end)
+        Check(p,A:T("SHOW_TIME"),530,y-30,function() return A.db.units[unitKey].showTime end,function(v) A.db.units[unitKey].showTime=v end)
+        Slider(p,A:T("WIDTH"),160,500,5,35,y-80,180,function() return A.db.units[unitKey].width end,function(v) A.db.units[unitKey].width=v end)
+        Slider(p,A:T("HEIGHT"),14,48,1,285,y-80,180,function() return A.db.units[unitKey].height end,function(v) A.db.units[unitKey].height=v end)
+        Slider(p,A:T("FONT_SIZE"),9,24,1,535,y-80,180,function() return A.db.units[unitKey].fontSize end,function(v) A.db.units[unitKey].fontSize=v end)
     end
 
     p=self.optionsPages[3]
