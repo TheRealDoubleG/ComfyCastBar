@@ -1,0 +1,15 @@
+## Interface: 16001
+## Title: ComfyCastBar
+## Notes: Customizable player, target, focus and pet cast bars for WoW Forever.
+## Notes-deDE: Anpassbare Zauberleisten für Spieler, Ziel, Fokus und Begleiter in WoW Forever.
+## Author: TheRealDoubleG
+## Version: 0.1
+## SavedVariables: ComfyCastBarDB
+## X-ComfySuite: true
+## X-ComfyUI: 2
+## IconTexture: Interface\\Icons\\Spell_Nature_TimeStop
+
+Locale.lua
+Core.lua
+CastBars.lua
+Options.lua
