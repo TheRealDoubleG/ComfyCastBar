@@ -10,6 +10,7 @@
 ## IconTexture: Interface\\Icons\\Spell_Nature_TimeStop
 
 Locale.lua
+Profiles.lua
 Core.lua
 CastBars.lua
 Options.lua
