@@ -87,6 +87,7 @@ end
 
 function A:BeginBar(bar,channel,castGUID)
     local info=Read(bar.unit,channel)
+    bar.preview=nil
     if not info then return false end
 
     local notInterruptible=channel and PlainBool(info[7]) or PlainBool(info[8])
@@ -112,13 +113,13 @@ function A:BeginBar(bar,channel,castGUID)
 end
 
 function A:RefreshBar(bar)
-    if self.db.testMode then self:ShowPreview(bar) return end
+    if self.db.testMode or self.db.unlocked then self:ShowPreview(bar) return end
     if not self.db.enabled or not bar.cfg.enabled then self:StopBar(bar) return end
     if not self:BeginBar(bar,false) and not self:BeginBar(bar,true) then self:StopBar(bar) end
 end
 
 function A:HandleBarEvent(bar,event,unit,castGUID)
-    if self.db.testMode then return end
+    if self.db.testMode or self.db.unlocked then return end
     if unit and unit~=bar.unit then return end
     if event=="UNIT_SPELLCAST_START" or event=="UNIT_SPELLCAST_DELAYED" then
         if not self:BeginBar(bar,false,castGUID) then self:StopBar(bar) end
@@ -131,7 +132,7 @@ end
 
 function A:OnBarUpdate(bar)
     local cast=bar.cast
-    if not cast or self.db.testMode then return end
+    if not cast or bar.preview or self.db.testMode or self.db.unlocked then return end
     local now=(GetTime and GetTime()*1000) or 0
     if not bar.timing then pcall(bar.status.SetValue,bar.status,now) end
     local e=PlainNumber(cast.endMs)
@@ -192,6 +193,7 @@ end
 
 function A:ShowPreview(bar)
     if not bar.cfg.enabled then bar:Hide(); return end
+    bar.preview=true
     bar.cast={channel=bar.unit=="focus",notInterruptible=bar.unit=="target",startMs=0,endMs=1}
     bar.status:SetMinMaxValues(0,1); bar.status:SetValue(0.62)
     bar.name:SetText(self:T("TEST_SPELL"))
@@ -254,7 +256,15 @@ end
 function A:SetUnlocked(enabled)
     if InCombatLockdown() then self:Print(self:T("LOCKED_COMBAT")); return false end
     self.db.unlocked=enabled and true or false
-    for _,bar in pairs(self.bars) do self:StyleBar(bar) end
+    for _,bar in pairs(self.bars) do
+        if self.db.unlocked and self.db.enabled and bar.cfg.enabled then
+            self:ShowPreview(bar)
+        else
+            bar.preview=nil
+            self:RefreshBar(bar)
+        end
+        self:StyleBar(bar)
+    end
     return true
 end
 
