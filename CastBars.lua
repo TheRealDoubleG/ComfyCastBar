@@ -207,7 +207,8 @@ function A:CreateBar(unit)
     local bar=CreateFrame("Frame","ComfyCastBar_"..unit,UIParent,"BackdropTemplate")
     bar.unit=unit
     bar.cfg=self.db.units[unit]
-    bar:SetClampedToScreen(true)\n    bar:SetMovable(true)
+    bar:SetClampedToScreen(true)
+    bar:SetMovable(true)
 
     bar.background=bar:CreateTexture(nil,"BACKGROUND")
     bar.background:SetAllPoints(bar)
