@@ -15,3 +15,4 @@ Core.lua
 CastBars.lua
 Options.lua
 TextFix.lua
+InterruptEnhancements.lua
